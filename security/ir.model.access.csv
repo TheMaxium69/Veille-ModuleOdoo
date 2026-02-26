@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_maximetest_maximetest,maximetest.maximetest,model_maximetest_maximetest,base.group_user,1,1,1,1
+access_agence_vehicule,agence.vehicule,model_agence_vehicule,base.group_user,1,1,1,1
+access_agence_vehicule_status,agence.vehicule.status,model_agence_vehicule_status,base.group_user,1,1,1,1

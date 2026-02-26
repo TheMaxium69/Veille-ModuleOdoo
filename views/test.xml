@@ -1,13 +1,66 @@
 <odoo>
     <data>
-        <!--on met les enregistrement ici dans la balise odoo -->
+
+        <record id="view_agence_vehicule_status_list" model="ir.ui.view">
+            <field name="name">agence.vehicule.status.list</field>
+            <field name="model">agence.vehicule.status</field>
+            <field name="arch" type="xml">
+                <list editable="bottom"> <field name="name"/>
+                    <field name="color" widget="color_picker"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="action_agence_vehicule_status" model="ir.actions.act_window">
+            <field name="name">Configuration des Statuts</field>
+            <field name="res_model">agence.vehicule.status</field>
+            <field name="view_mode">list</field>
+        </record>
+
+        <record id="view_agence_vehicule_list" model="ir.ui.view">
+            <field name="name">agence.vehicule.list</field>
+            <field name="model">agence.vehicule</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="marque"/>
+                    <field name="modele"/>
+                    <field name="date_achat"/>
+                    <field name="status_id" widget="badge" options="{'color_field': 'color'}"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_agence_vehicule_form" model="ir.ui.view">
+            <field name="name">agence.vehicule.form</field>
+            <field name="model">agence.vehicule</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="marque"/>
+                                <field name="modele"/>
+                                <field name="status_id"/> </group>
+                            <group>
+                                <field name="date_achat"/>
+                                <field name="chaffeur_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
         <record id='agence_vehicule_action' model='ir.actions.act_window'>
-            <field name="name"> Gestion des Véhicules  </field>
+            <field name="name">Gestion des Véhicules</field>
             <field name="res_model">agence.vehicule</field>
             <field name="view_mode">list,form</field>
         </record>
 
         <menuitem name="Mon Agence de Location" id="agence_base_menu" />
         <menuitem name="Vehicules" id="agence_vehicule_menu" parent="agence_base_menu" action="agence_vehicule_action"/>
+        <menuitem name="Configuration" id="agence_config_menu" parent="agence_base_menu" sequence="100"/>
+        <menuitem name="Statuts des Véhicules" id="agence_status_menu" parent="agence_config_menu" action="action_agence_vehicule_status"/>
+
     </data>
 </odoo>
