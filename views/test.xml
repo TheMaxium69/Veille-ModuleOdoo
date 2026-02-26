@@ -1,0 +1,13 @@
+<odoo>
+    <data>
+        <!--on met les enregistrement ici dans la balise odoo -->
+        <record id='agence_vehicule_action' model='ir.actions.act_window'>
+            <field name="name"> Gestion des Véhicules  </field>
+            <field name="res_model">agence.vehicule</field>
+            <field name="view_mode">list,form</field>
+        </record>
+
+        <menuitem name="Mon Agence de Location" id="agence_base_menu" />
+        <menuitem name="Vehicules" id="agence_vehicule_menu" parent="agence_base_menu" action="agence_vehicule_action"/>
+    </data>
+</odoo>
