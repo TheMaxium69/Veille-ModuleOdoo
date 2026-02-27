@@ -19,3 +19,6 @@ class AgenceVehicule(models.Model):
     status_id = fields.Many2one('agence.vehicule.status', string='Statut')
 
     chaffeur_ids = fields.Many2many('res.partner', string='Chaffeurs')
+
+    notes = fields.Text('Notes Internes')
+    description_web = fields.Html('Description Riche')

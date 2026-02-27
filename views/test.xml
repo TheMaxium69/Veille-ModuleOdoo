@@ -37,15 +37,25 @@
                 <form>
                     <sheet>
                         <group>
-                            <group>
+                            <group string="Identité">
                                 <field name="marque"/>
                                 <field name="modele"/>
-                                <field name="status_id"/> </group>
-                            <group>
+                                <field name="status_id" widget="selection"/>
+                            </group>
+                            <group string="Logistique">
                                 <field name="date_achat"/>
-                                <field name="chaffeur_ids" widget="many2many_tags"/>
+                                <field name="chaffeur_ids" widget="many2many_tags" placeholder="Ajouter des chauffeurs..."/>
                             </group>
                         </group>
+
+                        <notebook>
+                            <page string="Description Web" name="description_page">
+                                <field name="description_web" widget="html" options="{'safe': True}"/>
+                            </page>
+                            <page string="Notes Internes" name="notes_page">
+                                <field name="notes" placeholder="Écrivez vos notes privées ici..."/>
+                            </page>
+                        </notebook>
                     </sheet>
                 </form>
             </field>
@@ -57,7 +67,7 @@
             <field name="view_mode">list,form</field>
         </record>
 
-        <menuitem name="Mon Agence de Location" id="agence_base_menu" />
+        <menuitem name="Mon Agence de Location" id="agence_base_menu" web_icon="maximetest,static/description/icon.png"/>
         <menuitem name="Vehicules" id="agence_vehicule_menu" parent="agence_base_menu" action="agence_vehicule_action"/>
         <menuitem name="Configuration" id="agence_config_menu" parent="agence_base_menu" sequence="100"/>
         <menuitem name="Statuts des Véhicules" id="agence_status_menu" parent="agence_config_menu" action="action_agence_vehicule_status"/>
